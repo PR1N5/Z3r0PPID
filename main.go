@@ -25,7 +25,7 @@ func NewAuth() *Auth {
 	if err != nil {
 		fmt.Println("Error loading .env:", err)
 	}
-	fmt.Printf("DEBUG: USERNAME=%q PASSWORD=%q\n", os.Getenv("USERNAME_C2"), os.Getenv("PASSWORD_C2"))
+	//fmt.Printf("DEBUG: USERNAME=%q PASSWORD=%q\n", os.Getenv("USERNAME_C2"), os.Getenv("PASSWORD_C2"))
 	return &Auth{
 		Username: os.Getenv("USERNAME_C2"),
 		Password: os.Getenv("PASSWORD_C2"),
