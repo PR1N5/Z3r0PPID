@@ -1,0 +1,18 @@
+#app {
+    height: 100vh;
+    text-align: center;
+}
+
+.result {
+    height: 20px;
+    line-height: 20px;
+    margin: 1.5rem auto;
+}
+
+.logo-small {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    height: 400px;
+    width: auto;
+    object-fit: contain;
+}
