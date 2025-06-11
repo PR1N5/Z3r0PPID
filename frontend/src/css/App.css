@@ -3,16 +3,42 @@
     text-align: center;
 }
 
-.result {
-    height: 20px;
-    line-height: 20px;
-    margin: 1.5rem auto;
-}
-
 .logo-small {
     margin-top: 70px;
     margin-bottom: 20px;
     height: 400px;
     width: auto;
     object-fit: contain;
+}
+
+.custom-input {
+    width: 20%;
+    height: 30px;
+    padding: 0 20px;
+    font-size: 1.1rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.custom-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px #93c5fd;
+}
+
+.light-gray-button {
+    background-color: #d3d3d3;
+    color: #333;
+    padding: 6px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.light-gray-button:hover {
+    background-color: #bfbfbf;
 }

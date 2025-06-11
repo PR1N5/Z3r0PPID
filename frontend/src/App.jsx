@@ -19,7 +19,7 @@ function App() {
       {!loggedIn ? (
         <LoginView onLogin={handleLogin} />
       ) : (
-        <DashboardView />
+        <DashboardView setLoggedIn={setLoggedIn} />
       )}
     </>
   );

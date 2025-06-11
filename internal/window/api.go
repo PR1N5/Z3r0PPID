@@ -25,6 +25,5 @@ func (a *API) SetWindowTitle(title string) {
 		println("[ERROR] ctx is nil! Cannot set title")
 		return
 	}
-	println("[DEBUG] SetWindowTitle llamado con:", title)
 	runtime.WindowSetTitle(a.ctx, title)
 }

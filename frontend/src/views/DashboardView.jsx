@@ -1,23 +1,22 @@
-import '../css/App.css';
+import '../css/Dashboard.css';
 import { SetWindowTitle } from '../../wailsjs/go/window/API';
 import { useState, useEffect } from 'react';
 
 
-function DashboardView() {
+function DashboardView({ setLoggedIn }) {
 
     useEffect(() => {
         SetWindowTitle("Dashboard - Z3r0PPID");
     }, []);
 
     return (
-        <div className="h-screen w-screen bg-white flex items-center justify-center">
-            <h1 className="text-3xl font-bold text-black">Dashboard</h1>
-            <div className="h-screen w-screen bg-white flex items-left">
-                <button>
-                    clickme
-                </button>
-                <button>
-                    clickme2
+        <div>
+            <div>
+                <button
+                    onClick={(e) => setLoggedIn(false)}
+                    className='right-aligned-button'
+                >
+                    Sign out
                 </button>
             </div>
         </div>

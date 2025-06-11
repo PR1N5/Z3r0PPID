@@ -1,0 +1,12 @@
+.right-aligned-button {
+    margin-top: 15px;
+    margin-right: 10px;
+    display: block;
+    margin-left: auto;
+    padding: 10px 20px;
+    border: none;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}

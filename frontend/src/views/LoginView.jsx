@@ -21,9 +21,9 @@ function LoginView({ onLogin }) {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-10 rounded-2xl shadow-md w-full max-w-md border border-red-500">
-                <div className="w-full h-24 flex items-center justify-center bg-yellow-100">
+        <div>
+            <div>
+                <div>
                 <img
                     src={logo}
                     alt="Logo"
@@ -32,8 +32,8 @@ function LoginView({ onLogin }) {
                 </div>
 
                 {/* FORM */}
-                <div className="mb-4">
-                <label className="block w-full text-center text-sm font-semibold text-gray-700 mb-1">
+                <div>
+                <label>
                     Username:
                 </label>
                 <br />
@@ -41,16 +41,14 @@ function LoginView({ onLogin }) {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-                    className="w-full px-4 py-2 border border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="custom-input"
                     type="text"
                     placeholder="Username..."
                 />
                 </div>
 
-                <br />
-
-                <div className="mb-6">
-                <label className="block w-full text-center text-sm font-semibold text-gray-700 mb-1">
+                <div>
+                <label>
                     Password:
                 </label>
                 <br />
@@ -58,7 +56,7 @@ function LoginView({ onLogin }) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-                    className="w-full px-4 py-2 border border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="custom-input"
                     type="password"
                     placeholder="Password..."
                 />
@@ -66,17 +64,17 @@ function LoginView({ onLogin }) {
 
                 <br />
 
-                <div className="flex justify-end">
+                <div>
                 <button
                     onClick={handleLogin}
-                    className="bg-blue-100 text-blue-700 font-semibold px-6 py-2 rounded-xl border border-blue-500 hover:bg-blue-200 transition duration-200"
+                    className='light-gray-button'
                 >
                     LOGIN
                 </button>
                 </div>
 
                 {error && (
-                <p className="text-red-600 mt-4 text-center">Invalid credentials</p>
+                <p>Invalid credentials</p>
                 )}
             </div>
         </div>
