@@ -1,6 +1,7 @@
 import '../css/Dashboard.css';
 import { SetWindowTitle } from '../../wailsjs/go/window/API';
 import { useState, useEffect } from 'react';
+import DropdownMenu from '../components/DropdownMenu';
 
 
 function DashboardView({ setLoggedIn }) {
@@ -10,17 +11,22 @@ function DashboardView({ setLoggedIn }) {
     }, []);
 
     return (
-        <div>
-            <div>
-                <button
-                    onClick={(e) => setLoggedIn(false)}
-                    className='right-aligned-button'
-                >
-                    Sign out
-                </button>
+        <div className="header-container">
+            <div className="left">
+            <DropdownMenu />
+            </div>
+            <div className="center">
+            <h3>Dashboard</h3>
+            </div>
+            <div className="right">
+            <button
+                onClick={() => setLoggedIn(false)}
+                className="signout-button"
+            >
+                Sign out
+            </button>
             </div>
         </div>
-        
     );
 }
 

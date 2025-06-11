@@ -1,12 +1,54 @@
-.right-aligned-button {
-    margin-top: 15px;
-    margin-right: 10px;
-    display: block;
-    margin-left: auto;
-    padding: 10px 20px;
-    border: none;
-    background-color: #3b82f6;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  background-color: rgba(6, 10, 11, 1);
+  border-bottom: 1px solid #1a1f22;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.left {
+  padding-left: 10px;
+}
+
+.center {
+  flex: 1;
+  text-align: center;
+}
+
+.right {
+  padding-right: 10px;
+}
+
+.signout-button {
+  padding: 6px 14px;
+  margin-top: 0;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signout-button:hover {
+  background-color: #1d4ed8;
+}
+
+.dropdown-toggle {
+  padding: 6px 14px;
+  background-color: #334155;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: #475569;
 }
