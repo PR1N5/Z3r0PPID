@@ -7,7 +7,7 @@ function LoginView({ onLogin }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  async function handleLogin() {
+  async function handleLogin(e) {
     const success = await onLogin(username, password);
     setError(!success);
   }
@@ -32,6 +32,7 @@ function LoginView({ onLogin }) {
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
             className="w-full px-4 py-2 border border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             placeholder="Username..."
@@ -48,6 +49,7 @@ function LoginView({ onLogin }) {
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
             className="w-full px-4 py-2 border border-black rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="password"
             placeholder="Password..."
