@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Login } from '../wailsjs/go/main/Auth';
+import { Login } from '../wailsjs/go/auth/Auth';
 import logo from './assets/logo.png';
 import './App.css';
 
