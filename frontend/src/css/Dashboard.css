@@ -80,3 +80,7 @@
 .button-port:hover {
   background-color: #cccccc;
 }
+
+.label-connections {
+  margin-right: 20px;
+}

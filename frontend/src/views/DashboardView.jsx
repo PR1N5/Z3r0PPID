@@ -24,6 +24,10 @@ function DashboardView({ setLoggedIn }) {
                 <h3>Dashboard</h3>
             </div>
             <div className="right">
+                {/*TO-DO: change this for amount of connections*/}
+                <label
+                    className='label-connections'
+                >{1+1} connections</label>
                 <button
                     onClick={() => setLoggedIn(false)}
                     className="signout-button"
