@@ -4,16 +4,18 @@
 }
 
 .dropdown-toggle {
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: white;
+  padding: 6px 14px;
+  background-color: #e0e0e0;
+  color: #111111;
   border: none;
+  border-radius: 6px;
+  font-size: 13px;
   cursor: pointer;
-  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .dropdown-toggle:hover {
-  background-color: #0056b3;
+  background-color: #cccccc;
 }
 
 .dropdown-menu {

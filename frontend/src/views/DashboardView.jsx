@@ -13,18 +13,23 @@ function DashboardView({ setLoggedIn }) {
     return (
         <div className="header-container">
             <div className="left">
-            <DropdownMenu />
+                <DropdownMenu />
+                <button
+                    className='button-port'
+                >
+                    + Add port...
+                </button>
             </div>
             <div className="center">
-            <h3>Dashboard</h3>
+                <h3>Dashboard</h3>
             </div>
             <div className="right">
-            <button
-                onClick={() => setLoggedIn(false)}
-                className="signout-button"
-            >
-                Sign out
-            </button>
+                <button
+                    onClick={() => setLoggedIn(false)}
+                    className="signout-button"
+                >
+                    Sign out
+                </button>
             </div>
         </div>
     );
