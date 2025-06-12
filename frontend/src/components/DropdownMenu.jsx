@@ -23,8 +23,8 @@ const DropdownMenu = () => {
       {open && (
         <div className="dropdown-menu">
           <div className="dropdown-item">Configuration</div>
-          <div className="dropdown-item">About the c2...</div>
           <div className="dropdown-item">Open ports...</div>
+          <div className="dropdown-item">About the c2...</div>
           <div className="dropdown-divider"></div>
           <div className="dropdown-item">Close all...</div>
         </div>
