@@ -7,6 +7,8 @@ import ConnectionsTable from '../components/ConnectionsTable';
 
 function DashboardView({ setLoggedIn }) {
 
+    const [totalConnections, setTotalConnections] = useState(0);
+
     useEffect(() => {
         SetWindowTitle("Dashboard - Z3r0PPID");
     }, []);
@@ -16,20 +18,13 @@ function DashboardView({ setLoggedIn }) {
             <div className="header-container">
                 <div className="left">
                     <DropdownMenu />
-                    <button
-                        className='button-port'
-                    >
-                        + Add port...
-                    </button>
+                    <button className='button-port'>+ Add port...</button>
                 </div>
                 <div className="center">
                     <h3>Dashboard</h3>
                 </div>
                 <div className="right">
-                    {/*TO-DO: change this for amount of connections*/}
-                    <label
-                        className='label-connections'
-                    >{1+1} connections</label>
+                    <label className='label-connections'>{totalConnections} connections</label>
                     <button
                         onClick={() => setLoggedIn(false)}
                         className="signout-button"
@@ -38,7 +33,17 @@ function DashboardView({ setLoggedIn }) {
                     </button>
                 </div>
             </div>
-            <ConnectionsTable />
+
+            <div className="content-container">
+                {/* TO-DO: change this with real data */}
+                <ConnectionsTable 
+                    setTotalConnections={setTotalConnections}
+                />
+            </div>
+
+            <div className="dashboard-footer">
+                Z3r0PPID v0.0.3
+            </div>
         </>
     );
 }

@@ -120,7 +120,47 @@ const connections = [
     distribution: 'Linux',
     connectedAt: new Date('2025-06-13T00:05:00'),
     state: 'disconnected',
-  }
+  },
+  {
+  ip: '192.168.2.60',
+  username: 'nathan',
+  hostname: 'NATHAN-WIN11',
+  distribution: 'Windows',
+  connectedAt: new Date('2025-06-13T12:05:00'),
+  state: 'connected',
+},
+{
+  ip: '10.0.3.14',
+  username: 'devuser',
+  hostname: 'arch-dev',
+  distribution: 'Linux',
+  connectedAt: new Date('2025-06-13T04:45:00'),
+  state: 'connected',
+},
+{
+  ip: '172.16.10.22',
+  username: 'eve',
+  hostname: 'eve-thinkpad',
+  distribution: 'Linux',
+  connectedAt: new Date('2025-06-12T18:15:00'),
+  state: 'disconnected',
+},
+{
+  ip: '192.168.0.88',
+  username: 'leo',
+  hostname: 'LEO-PC',
+  distribution: 'Windows',
+  connectedAt: new Date('2025-06-13T10:50:00'),
+  state: 'connected',
+},
+{
+  ip: '10.10.0.77',
+  username: 'qa',
+  hostname: 'qa-vm',
+  distribution: 'Linux',
+  connectedAt: new Date('2025-06-13T03:35:00'),
+  state: 'disconnected',
+}
 ];
 
 export default connections;

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import connections from '../mockData';
 import '../css/Dashboard.css';
 
-function ConnectionsTable() {
+function ConnectionsTable({ setTotalConnections }) {
+
+    useEffect(()=>{
+        setTotalConnections(connections.length);
+    },[]);
+
     return (
-        <div className="connections-container">
+        <div className="connections-container" >
             <table className="connections-table">
                 <thead>
                     <tr>
