@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import connections from '../mockData';
 import '../css/Dashboard.css';
 
-function ConnectionsTable({ setTotalConnections }) {
+function ConnectionsTable({ setTotalConnections, onConnectionClick }) {
 
-    useEffect(()=>{
+    useEffect(() => {
         setTotalConnections(connections.length);
-    },[]);
+    }, []);
 
     return (
-        <div className="connections-container" >
+        <div className="connections-container">
             <table className="connections-table">
                 <thead>
                     <tr>
@@ -23,7 +23,11 @@ function ConnectionsTable({ setTotalConnections }) {
                 </thead>
                 <tbody>
                     {connections.map((conn, index) => (
-                        <tr key={index}>
+                        <tr
+                            key={index}
+                            onClick={() => onConnectionClick(conn)}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <td>{conn.ip}</td>
                             <td>{conn.username}</td>
                             <td>{conn.hostname}</td>
