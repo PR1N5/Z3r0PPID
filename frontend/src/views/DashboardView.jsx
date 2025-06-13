@@ -2,6 +2,7 @@ import '../css/Dashboard.css';
 import { SetWindowTitle } from '../../wailsjs/go/window/API';
 import { useState, useEffect } from 'react';
 import DropdownMenu from '../components/DropdownMenu';
+import ConnectionsTable from '../components/ConnectionsTable';
 
 
 function DashboardView({ setLoggedIn }) {
@@ -11,31 +12,34 @@ function DashboardView({ setLoggedIn }) {
     }, []);
 
     return (
-        <div className="header-container">
-            <div className="left">
-                <DropdownMenu />
-                <button
-                    className='button-port'
-                >
-                    + Add port...
-                </button>
+        <>
+            <div className="header-container">
+                <div className="left">
+                    <DropdownMenu />
+                    <button
+                        className='button-port'
+                    >
+                        + Add port...
+                    </button>
+                </div>
+                <div className="center">
+                    <h3>Dashboard</h3>
+                </div>
+                <div className="right">
+                    {/*TO-DO: change this for amount of connections*/}
+                    <label
+                        className='label-connections'
+                    >{1+1} connections</label>
+                    <button
+                        onClick={() => setLoggedIn(false)}
+                        className="signout-button"
+                    >
+                        Sign out
+                    </button>
+                </div>
             </div>
-            <div className="center">
-                <h3>Dashboard</h3>
-            </div>
-            <div className="right">
-                {/*TO-DO: change this for amount of connections*/}
-                <label
-                    className='label-connections'
-                >{1+1} connections</label>
-                <button
-                    onClick={() => setLoggedIn(false)}
-                    className="signout-button"
-                >
-                    Sign out
-                </button>
-            </div>
-        </div>
+            <ConnectionsTable />
+        </>
     );
 }
 
