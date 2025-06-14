@@ -1,17 +1,23 @@
 import '../css/Dashboard.css';
-import { SetWindowTitle } from '../../wailsjs/go/window/API';
+import { SetWindowTitle,ShowPopup } from '../../wailsjs/go/window/API';
 import { useState, useEffect } from 'react';
 import DropdownMenu from '../components/DropdownMenu';
 import ConnectionsTable from '../components/ConnectionsTable';
 import ConnectionDetail from '../components/ConnectionDetail';
+import PopupForm from "../components/PopupForm";
 
 function DashboardView({ setLoggedIn }) {
     const [totalConnections, setTotalConnections] = useState(0);
     const [selectedConnection, setSelectedConnection] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
 
     useEffect(() => {
         SetWindowTitle("Dashboard - Z3r0PPID");
     }, []);
+
+    const mostrarPopup = () => {
+        ShowPopup("TEST", "This is a test for buttons");
+    };
 
     return (
         <>
@@ -20,7 +26,7 @@ function DashboardView({ setLoggedIn }) {
                     <div className="header-container">
                         <div className="left">
                             <DropdownMenu />
-                            <button className='button-port'>+ Add port...</button>
+                            <button className='button-port' onClick={() => setShowPopup(true)}>+ Add port...</button>
                         </div>
                         <div className="center">
                             <h3>Dashboard</h3>
@@ -51,6 +57,15 @@ function DashboardView({ setLoggedIn }) {
                 <ConnectionDetail
                     connection={selectedConnection}
                     onBack={() => setSelectedConnection(null)}
+                />
+            )}
+            {showPopup && (
+                <PopupForm
+                    onClose={() => setShowPopup(false)}
+                    onSubmit={(port) => {
+                    console.log("received port:", port);
+                    //change this for later use
+                    }}
                 />
             )}
         </>

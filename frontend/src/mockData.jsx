@@ -163,4 +163,10 @@ const connections = [
 }
 ];
 
+export const networkInterfaces = [
+  "192.168.0.10 (eth0)",
+  "10.8.0.1 (tun0)",
+  "127.0.0.1 (lo)",
+];
+
 export default connections;

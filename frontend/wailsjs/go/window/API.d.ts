@@ -4,4 +4,6 @@ import {context} from '../models';
 
 export function SetWindowTitle(arg1:string):Promise<void>;
 
+export function ShowPopup(arg1:string,arg2:string):Promise<void>;
+
 export function Startup(arg1:context.Context):Promise<void>;

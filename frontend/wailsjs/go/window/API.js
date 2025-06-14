@@ -6,6 +6,10 @@ export function SetWindowTitle(arg1) {
   return window['go']['window']['API']['SetWindowTitle'](arg1);
 }
 
+export function ShowPopup(arg1, arg2) {
+  return window['go']['window']['API']['ShowPopup'](arg1, arg2);
+}
+
 export function Startup(arg1) {
   return window['go']['window']['API']['Startup'](arg1);
 }

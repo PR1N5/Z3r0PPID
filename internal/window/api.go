@@ -27,3 +27,14 @@ func (a *API) SetWindowTitle(title string) {
 	}
 	runtime.WindowSetTitle(a.ctx, title)
 }
+
+func (a *API) ShowPopup(title, message string) {
+	if a.ctx == nil {
+		println("[ERROR] ctx is nil! Cannot show popup")
+		return
+	}
+	runtime.MessageDialog(a.ctx, runtime.MessageDialogOptions{
+		Title:   title,
+		Message: message,
+	})
+}
