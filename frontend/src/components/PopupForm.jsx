@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
-import { networkInterfaces } from '../mockData';
+import React, { useState, useEffect } from 'react';
+import { NetworkInterfaces } from '../../wailsjs/go/network/Service';
 import '../css/PopupForm.css';
 
 export default function PopupForm({ onClose, onSubmit }) {
-  const [selectedInterface, setSelectedInterface] = useState(networkInterfaces[0]);
+  const [interfaces, setInterfaces] = useState([]);
+  const [selectedInterface, setSelectedInterface] = useState('');
   const [inputValue, setInputValue] = useState('');
 
-  const handleSubmit = () => {
-
-    if(inputValue.trim() === ""){
-      return;
+  useEffect(() => {
+    async function fetchInterfaces() {
+      try {
+        const result = await NetworkInterfaces();
+        setInterfaces(result);
+        if (result.length > 0) {
+          setSelectedInterface(result[0]);
+        }
+      } catch (err) {
+        console.error('Error fetching network interfaces:', err);
+      }
     }
 
+    fetchInterfaces();
+  }, []);
+
+  const handleSubmit = () => {
+    if (inputValue.trim() === '') return;
     onSubmit({ iface: selectedInterface, value: inputValue });
     onClose();
   };
@@ -21,14 +34,13 @@ export default function PopupForm({ onClose, onSubmit }) {
       <div className="modal">
         <h3>Open a new port</h3>
 
-        {/* TO-DO: Change this for real data */}
         <label htmlFor="iface-select">Interface:</label>
         <select
           id="iface-select"
           value={selectedInterface}
           onChange={e => setSelectedInterface(e.target.value)}
         >
-          {networkInterfaces.map((iface, idx) => (
+          {interfaces.map((iface, idx) => (
             <option key={idx} value={iface}>
               {iface}
             </option>

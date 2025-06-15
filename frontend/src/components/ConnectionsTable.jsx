@@ -1,12 +1,32 @@
-import React, { useEffect } from 'react';
-import connections from '../mockData';
+import React, { useState, useEffect } from 'react';
+import { GetConnections, AddMockConnection } from '../../wailsjs/go/connections/Manager';
 import '../css/Dashboard.css';
 
 function ConnectionsTable({ setTotalConnections, onConnectionClick }) {
 
+    const [connections, setConnections] = useState([]);
+
     useEffect(() => {
-        setTotalConnections(connections.length);
-    }, []);
+        async function fetchConnections() {
+            try {
+                const conns = await GetConnections();
+                const connsWithDate = conns.map(conn => ({
+                    ...conn,
+                    connectedAt: new Date(conn.connectedAt)
+                }));
+                setConnections(connsWithDate);
+                setTotalConnections(connsWithDate.length);
+            } catch (err) {
+                console.error('Error fetching connections:', err);
+            }
+        }
+
+        fetchConnections();
+
+        const intervalId = setInterval(fetchConnections, 3000);
+
+        return () => clearInterval(intervalId);
+    }, [setTotalConnections]);
 
     return (
         <div className="connections-container">

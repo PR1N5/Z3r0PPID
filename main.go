@@ -5,6 +5,9 @@ import (
 	"embed"
 
 	"c2-malware/internal/auth"
+	"c2-malware/internal/connections"
+	"c2-malware/internal/listener"
+	"c2-malware/internal/network"
 	"c2-malware/internal/window"
 
 	"github.com/wailsapp/wails/v2"
@@ -18,6 +21,9 @@ var assets embed.FS
 func main() {
 	auth := auth.NewAuth()
 	windowAPI := window.NewAPI()
+	connectionService := connections.NewManager()
+	listenerService := listener.NewService(connectionService)
+	networkService := network.NewService()
 
 	err := wails.Run(&options.App{
 		Title:  "",
@@ -32,6 +38,9 @@ func main() {
 		Bind: []interface{}{
 			auth,
 			windowAPI,
+			connectionService,
+			listenerService,
+			networkService,
 		},
 	})
 

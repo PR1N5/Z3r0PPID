@@ -1,5 +1,6 @@
 import '../css/Dashboard.css';
 import { SetWindowTitle,ShowPopup } from '../../wailsjs/go/window/API';
+import { OpenListener } from '../../wailsjs/go/listener/Service';
 import { useState, useEffect } from 'react';
 import DropdownMenu from '../components/DropdownMenu';
 import ConnectionsTable from '../components/ConnectionsTable';
@@ -63,9 +64,15 @@ function DashboardView({ setLoggedIn }) {
             {showPopup && (
                 <PopupForm
                     onClose={() => setShowPopup(false)}
-                    onSubmit={(port) => {
-                        mostrarPopup(port);
-                        //change this for later use
+                    onSubmit={async ({ iface, value }) => {
+                        const ip = iface.split(' ')[0];
+                        try {
+                            await OpenListener(ip, value);
+                            //mostrarPopup({ ip, port: value });
+                        } catch (err) {
+                            console.error("Error opening listener:", err);
+                            alert("Failed to open listener: " + err);
+                        }
                     }}
                 />
             )}
