@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { GetConnections } from '../../wailsjs/go/connections/Manager';
+import { GetAllConnections } from '../../wailsjs/go/connections/Service';
 import '../css/Dashboard.css';
 
 function ConnectionsTable({ setTotalConnections, onConnectionClick }) {
-
     const [connections, setConnections] = useState([]);
 
     useEffect(() => {
         async function fetchConnections() {
             try {
-                const conns = await GetConnections();
+                const conns = await GetAllConnections();
+                if (!Array.isArray(conns)) throw new Error("Invalid data");
                 const connsWithDate = conns.map(conn => ({
                     ...conn,
-                    connectedAt: new Date(conn.connectedAt)
+                    connectedAt: conn.connectedAt ? new Date(conn.connectedAt) : new Date()
                 }));
                 setConnections(connsWithDate);
                 setTotalConnections(connsWithDate.length);
@@ -22,9 +22,7 @@ function ConnectionsTable({ setTotalConnections, onConnectionClick }) {
         }
 
         fetchConnections();
-
         const intervalId = setInterval(fetchConnections, 3000);
-
         return () => clearInterval(intervalId);
     }, [setTotalConnections]);
 
@@ -52,10 +50,10 @@ function ConnectionsTable({ setTotalConnections, onConnectionClick }) {
                             <td>{conn.username}</td>
                             <td>{conn.hostname}</td>
                             <td>{conn.distribution}</td>
-                            <td>{conn.connectedAt.toLocaleString()}</td>
+                            <td>{conn.connectedAt?.toLocaleString()}</td>
                             <td>
                                 <span className={`connection-state ${conn.state}`}>
-                                    {conn.state.charAt(0).toUpperCase() + conn.state.slice(1)}
+                                    {conn.state ? conn.state.charAt(0).toUpperCase() + conn.state.slice(1) : 'Unknown'}
                                 </span>
                             </td>
                         </tr>

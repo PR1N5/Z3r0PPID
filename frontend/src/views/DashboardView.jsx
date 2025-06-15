@@ -52,7 +52,7 @@ function DashboardView({ setLoggedIn }) {
                     </div>
 
                     <div className="dashboard-footer">
-                        Z3r0PPID v0.0.4
+                        Z3r0PPID v1.0.0
                     </div>
                 </>
             ) : (

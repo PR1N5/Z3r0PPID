@@ -1,7 +1,7 @@
 export namespace connections {
 	
 	export class Connection {
-	    threadId: number;
+	    ID: number;
 	    ip: string;
 	    username: string;
 	    hostname: string;
@@ -9,6 +9,7 @@ export namespace connections {
 	    // Go type: time
 	    connectedAt: any;
 	    state: string;
+	    Conn: any;
 	
 	    static createFrom(source: any = {}) {
 	        return new Connection(source);
@@ -16,13 +17,14 @@ export namespace connections {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.threadId = source["threadId"];
+	        this.ID = source["ID"];
 	        this.ip = source["ip"];
 	        this.username = source["username"];
 	        this.hostname = source["hostname"];
 	        this.distribution = source["distribution"];
 	        this.connectedAt = this.convertValues(source["connectedAt"], null);
 	        this.state = source["state"];
+	        this.Conn = source["Conn"];
 	    }
 	
 		convertValues(a: any, classs: any, asMap: boolean = false): any {

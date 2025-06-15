@@ -40,7 +40,6 @@ const connections = [
     connectedAt: new Date('2025-06-13T01:25:00'),
     state: 'disconnected',
   },
-  // Nuevos
   {
     ip: '192.168.1.45',
     username: 'alice',

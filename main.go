@@ -21,8 +21,9 @@ var assets embed.FS
 func main() {
 	auth := auth.NewAuth()
 	windowAPI := window.NewAPI()
-	connectionService := connections.NewManager()
-	listenerService := listener.NewService(connectionService)
+	connManager := connections.NewManager()
+	connService := connections.NewService(connManager)
+	listenerService := listener.NewService(connManager, connService)
 	networkService := network.NewService()
 
 	err := wails.Run(&options.App{
@@ -34,11 +35,12 @@ func main() {
 		},
 		OnStartup: func(ctx context.Context) {
 			windowAPI.Startup(ctx)
+			connService.Startup(ctx)
 		},
 		Bind: []interface{}{
 			auth,
 			windowAPI,
-			connectionService,
+			connService,
 			listenerService,
 			networkService,
 		},

@@ -1,4 +1,3 @@
-// window/api.go
 package window
 
 import (

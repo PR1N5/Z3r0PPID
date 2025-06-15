@@ -8,15 +8,17 @@ import (
 )
 
 type Service struct {
-	mu          sync.Mutex
-	listeners   map[string]net.Listener
-	connManager *connections.Manager
+	mu                 sync.Mutex
+	listeners          map[string]net.Listener
+	connManager        *connections.Manager
+	connManagerService *connections.Service
 }
 
-func NewService(connMgr *connections.Manager) *Service {
+func NewService(connMgr *connections.Manager, connMgrService *connections.Service) *Service {
 	return &Service{
-		listeners:   make(map[string]net.Listener),
-		connManager: connMgr,
+		listeners:          make(map[string]net.Listener),
+		connManager:        connMgr,
+		connManagerService: connMgrService,
 	}
 }
 
@@ -40,9 +42,11 @@ func (s *Service) OpenListener(ip, port string) error {
 		for {
 			conn, err := l.Accept()
 			if err != nil {
+				fmt.Println("Listener accept error:", err)
 				return
 			}
-			go s.handleConnection(conn)
+
+			s.handleConnection(conn)
 		}
 	}()
 
@@ -61,14 +65,5 @@ func (s *Service) ListListeners() []string {
 }
 
 func (s *Service) handleConnection(conn net.Conn) {
-	defer conn.Close()
-	fmt.Println("New connection from", conn.RemoteAddr())
-
-	//TO-DO: CHANGE THIS WITH REAL DATA
-	s.connManager.AddConnection(
-		conn.RemoteAddr().String(),
-		"unknown",
-		"unknown-host",
-		"unknown",
-	)
+	s.connManagerService.HandleConnection(conn)
 }

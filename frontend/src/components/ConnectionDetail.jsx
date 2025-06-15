@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
+import { SendCommand } from '../../wailsjs/go/connections/Service';
+import { EventsOn, EventsOff } from '../../wailsjs/runtime/runtime';
+import stripAnsi from 'strip-ansi';
 import '../css/ConnectionDetail.css';
 
 function ConnectionDetail({ connection, onBack }) {
@@ -6,25 +9,50 @@ function ConnectionDetail({ connection, onBack }) {
     const [command, setCommand] = useState('');
     const outputRef = useRef(null);
 
-    //TO-DO: change this later
-    const handleExecute = (e) => {
+    const handleExecute = async (e) => {
         e.preventDefault();
         if (command.trim() === '') return;
 
-        const fakeResponse = `${command}`;
         const newEntry = `${connection.username}@${connection.hostname}:~$ ${command}`;
+        setOutput(prev => [...prev, newEntry]);
 
-        setOutput(prev => [...prev, newEntry, fakeResponse]);
+        try {
+            await SendCommand(connection.ID, command);
+        } catch (err) {
+            setOutput(prev => [...prev, `Error sending command: ${err.message}`]);
+        }
         setCommand('');
     };
 
+    useEffect(() => {
+        let isFirstLine = true;
+
+        const handler = (id, line) => {
+            if (parseInt(id) === parseInt(connection.ID)) {
+                const cleanLine = stripAnsi(line).trim();
+
+                if (isFirstLine) {
+                    isFirstLine = false;
+                    return;
+                }
+
+                if (cleanLine !== '') {
+                    setOutput(prev => [...prev, cleanLine]);
+                }
+            }
+        };
+
+        EventsOn('commandOutput', handler);
+        return () => {
+            EventsOff('commandOutput', handler);
+        };
+    }, [connection.ID]);
 
     useEffect(() => {
         if (outputRef.current) {
             outputRef.current.scrollTop = outputRef.current.scrollHeight;
         }
     }, [output]);
-
 
     return (
         <div className="terminal-container">
