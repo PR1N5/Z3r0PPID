@@ -169,4 +169,57 @@ export const networkInterfaces = [
   "127.0.0.1 (lo)",
 ];
 
+export const openPorts = [
+
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  }
+
+];
+
 export default connections;

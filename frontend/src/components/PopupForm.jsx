@@ -7,6 +7,11 @@ export default function PopupForm({ onClose, onSubmit }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = () => {
+
+    if(inputValue.trim() === ""){
+      return;
+    }
+
     onSubmit({ iface: selectedInterface, value: inputValue });
     onClose();
   };
@@ -36,6 +41,7 @@ export default function PopupForm({ onClose, onSubmit }) {
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
           placeholder="Port..."
+          required
         />
 
         <div className="modal-buttons">

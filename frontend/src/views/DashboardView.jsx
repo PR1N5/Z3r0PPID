@@ -15,8 +15,9 @@ function DashboardView({ setLoggedIn }) {
         SetWindowTitle("Dashboard - Z3r0PPID");
     }, []);
 
-    const mostrarPopup = () => {
-        ShowPopup("TEST", "This is a test for buttons");
+    // this is now for debugging
+    const mostrarPopup = (text) => {
+        ShowPopup("TEST", "Text received: \n" + JSON.stringify(text, null, 2));
     };
 
     return (
@@ -63,8 +64,8 @@ function DashboardView({ setLoggedIn }) {
                 <PopupForm
                     onClose={() => setShowPopup(false)}
                     onSubmit={(port) => {
-                    console.log("received port:", port);
-                    //change this for later use
+                        mostrarPopup(port);
+                        //change this for later use
                     }}
                 />
             )}
