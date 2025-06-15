@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GetConnections, AddMockConnection } from '../../wailsjs/go/connections/Manager';
+import { GetConnections } from '../../wailsjs/go/connections/Manager';
 import '../css/Dashboard.css';
 
 function ConnectionsTable({ setTotalConnections, onConnectionClick }) {

@@ -6,10 +6,6 @@ export function AddConnection(arg1, arg2, arg3, arg4) {
   return window['go']['connections']['Manager']['AddConnection'](arg1, arg2, arg3, arg4);
 }
 
-export function AddMockConnection() {
-  return window['go']['connections']['Manager']['AddMockConnection']();
-}
-
 export function GetConnections() {
   return window['go']['connections']['Manager']['GetConnections']();
 }

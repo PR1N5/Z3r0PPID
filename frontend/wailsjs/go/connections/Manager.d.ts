@@ -4,6 +4,4 @@ import {connections} from '../models';
 
 export function AddConnection(arg1:string,arg2:string,arg3:string,arg4:string):Promise<void>;
 
-export function AddMockConnection():Promise<void>;
-
 export function GetConnections():Promise<Array<connections.Connection>>;
