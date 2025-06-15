@@ -1,6 +1,6 @@
 .terminal-container {
     background-color: #000;
-    color: #fff; /* blanco en lugar de verde */
+    color: #fff;
     font-family: monospace;
     height: 100vh;
     display: flex;
@@ -33,12 +33,12 @@
 .terminal-output {
     flex: 1;
     overflow-y: auto;
-    padding: 10px 10px 0 10px; /* deja solo un poco de margen */
+    padding: 10px 10px 0 10px;
     white-space: pre-wrap;
 }
 
 .terminal-line {
-    margin: 0; /* sin margen inferior para apegarlo al estilo terminal */
+    margin: 0;
     padding: 0;
 }
 

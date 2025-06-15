@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import InfoOpenPorts from "./InfoOpenPorts";
+import ApplicationInformation from "./ApplicationInformation";
 import "../css/DropdownMenu.css";
 
 const DropdownMenu = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [showInfoPorts, setShowInfoPorts] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -26,7 +28,7 @@ const DropdownMenu = () => {
         <div className="dropdown-menu">
           <div className="dropdown-item">Configuration</div>
           <div className="dropdown-item" onClick={() => setShowInfoPorts(true)} >Open ports...</div>
-          <div className="dropdown-item">About the c2...</div>
+          <div className="dropdown-item" onClick={() => setShowAbout(true)} >About the c2...</div>
           <div className="dropdown-divider"></div>
           <div className="dropdown-item">Close all...</div>
         </div>
@@ -34,6 +36,11 @@ const DropdownMenu = () => {
       {showInfoPorts && (
         <InfoOpenPorts
           onClose={() => setShowInfoPorts(false)}
+        />
+      )}
+      {showAbout && (
+        <ApplicationInformation
+          onClose={() => setShowAbout(false)}
         />
       )}
     </div>
