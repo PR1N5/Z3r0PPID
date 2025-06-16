@@ -14,7 +14,7 @@ export default function ApplicationInformation({ onClose }) {
             The system is designed for flexibility and modularity, supporting advanced operations such as custom payload execution and port-level control.
           </p>
           <p>
-            Version: <strong>v1.0.0</strong>
+            Version: <strong>v1.0.1</strong>
           </p>
         </div>
 

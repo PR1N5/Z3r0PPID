@@ -67,3 +67,41 @@ func (s *Service) ListListeners() []string {
 func (s *Service) handleConnection(conn net.Conn) {
 	s.connManagerService.HandleConnection(conn)
 }
+
+func (s *Service) CloseListener(ip, port string) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	addr := net.JoinHostPort(ip, port)
+
+	listener, exists := s.listeners[addr]
+	if !exists {
+		return fmt.Errorf("no listener exists on %s", addr)
+	}
+
+	err := listener.Close()
+	if err != nil {
+		return fmt.Errorf("error closing listener on %s: %v", addr, err)
+	}
+
+	delete(s.listeners, addr)
+	fmt.Printf("Closed listener on %s\n", addr)
+	return nil
+}
+
+func (s *Service) CloseAllListeners() error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	for addr, listener := range s.listeners {
+		err := listener.Close()
+		if err != nil {
+			fmt.Printf("Error closing listener on %s: %v\n", addr, err)
+			continue
+		}
+		fmt.Printf("Closed listener on %s\n", addr)
+		delete(s.listeners, addr)
+	}
+
+	return nil
+}
