@@ -1,0 +1,224 @@
+
+const connections = [
+  {
+    ip: '192.168.1.10',
+    username: 'admin',
+    hostname: 'DESKTOP-01',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-13T08:45:00'),
+    state: 'connected',
+  },
+  {
+    ip: '10.0.0.22',
+    username: 'root',
+    hostname: 'kali-vm',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-13T09:10:00'),
+    state: 'connected',
+  },
+  {
+    ip: '172.16.5.34',
+    username: 'jdoe',
+    hostname: 'laptop-jdoe',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-12T20:15:00'),
+    state: 'disconnected',
+  },
+  {
+    ip: '192.168.0.105',
+    username: 'maria',
+    hostname: 'MARIA-PC',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-11T17:30:00'),
+    state: 'connected',
+  },
+  {
+    ip: '10.10.1.50',
+    username: 'service',
+    hostname: 'srv-linux01',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-13T01:25:00'),
+    state: 'disconnected',
+  },
+  {
+    ip: '192.168.1.45',
+    username: 'alice',
+    hostname: 'OFFICE-PC',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-13T10:20:00'),
+    state: 'connected',
+  },
+  {
+    ip: '10.0.0.101',
+    username: 'bob',
+    hostname: 'bob-laptop',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-13T06:55:00'),
+    state: 'connected',
+  },
+  {
+    ip: '172.16.0.77',
+    username: 'sysadmin',
+    hostname: 'srv-win2019',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-12T23:10:00'),
+    state: 'disconnected',
+  },
+  {
+    ip: '192.168.100.21',
+    username: 'carla',
+    hostname: 'CARLA-NOTE',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-13T09:40:00'),
+    state: 'connected',
+  },
+  {
+    ip: '10.1.1.9',
+    username: 'ubuntu',
+    hostname: 'docker-host',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-13T07:30:00'),
+    state: 'connected',
+  },
+  {
+    ip: '192.168.56.1',
+    username: 'guest',
+    hostname: 'guest-vm',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-13T05:00:00'),
+    state: 'disconnected',
+  },
+  {
+    ip: '10.0.2.15',
+    username: 'test',
+    hostname: 'TEST-MACHINE',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-13T02:45:00'),
+    state: 'disconnected',
+  },
+  {
+    ip: '192.168.88.12',
+    username: 'valeria',
+    hostname: 'VAL-PC',
+    distribution: 'Windows',
+    connectedAt: new Date('2025-06-13T11:15:00'),
+    state: 'connected',
+  },
+  {
+    ip: '172.20.10.5',
+    username: 'pi',
+    hostname: 'raspberrypi',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-12T19:20:00'),
+    state: 'connected',
+  },
+  {
+    ip: '10.10.10.10',
+    username: 'monitor',
+    hostname: 'NMS-SERVER',
+    distribution: 'Linux',
+    connectedAt: new Date('2025-06-13T00:05:00'),
+    state: 'disconnected',
+  },
+  {
+  ip: '192.168.2.60',
+  username: 'nathan',
+  hostname: 'NATHAN-WIN11',
+  distribution: 'Windows',
+  connectedAt: new Date('2025-06-13T12:05:00'),
+  state: 'connected',
+},
+{
+  ip: '10.0.3.14',
+  username: 'devuser',
+  hostname: 'arch-dev',
+  distribution: 'Linux',
+  connectedAt: new Date('2025-06-13T04:45:00'),
+  state: 'connected',
+},
+{
+  ip: '172.16.10.22',
+  username: 'eve',
+  hostname: 'eve-thinkpad',
+  distribution: 'Linux',
+  connectedAt: new Date('2025-06-12T18:15:00'),
+  state: 'disconnected',
+},
+{
+  ip: '192.168.0.88',
+  username: 'leo',
+  hostname: 'LEO-PC',
+  distribution: 'Windows',
+  connectedAt: new Date('2025-06-13T10:50:00'),
+  state: 'connected',
+},
+{
+  ip: '10.10.0.77',
+  username: 'qa',
+  hostname: 'qa-vm',
+  distribution: 'Linux',
+  connectedAt: new Date('2025-06-13T03:35:00'),
+  state: 'disconnected',
+}
+];
+
+export const networkInterfaces = [
+  "192.168.0.10 (eth0)",
+  "10.8.0.1 (tun0)",
+  "127.0.0.1 (lo)",
+];
+
+export const openPorts = [
+
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 8080
+  },
+  {
+    iface: "192.168.0.10 (eth0)",
+    port: 13313
+  },
+  {
+    iface: "10.8.0.1 (tun0)",
+    port: 1337
+  }
+
+];
+
+export default connections;

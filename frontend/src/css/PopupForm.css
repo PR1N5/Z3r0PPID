@@ -1,0 +1,94 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(6, 10, 11, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal {
+  background-color: rgba(6, 10, 11, 1);
+  border: 1px solid #1a1f22;
+  border-radius: 10px;
+  padding: 20px 25px;
+  width: 320px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ddd;
+  margin-top: 10px;
+}
+
+.modal select{
+  width: 100%;
+  padding: 2px 12px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #0f1518;
+  color: #334155;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.modal input[type="text"] {
+  width: 100%;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #0f1518;
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.modal select:focus,
+.modal input[type="text"]:focus {
+  border-color: #4755;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.button-port {
+  padding: 6px 14px;
+  background-color: #e0e0e0;
+  color: #111111;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button-port:hover {
+  background-color: #cccccc;
+}

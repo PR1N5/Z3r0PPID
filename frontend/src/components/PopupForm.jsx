@@ -1,0 +1,66 @@
+import React, { useState, useEffect } from 'react';
+import { NetworkInterfaces } from '../../wailsjs/go/network/Service';
+import '../css/PopupForm.css';
+
+export default function PopupForm({ onClose, onSubmit }) {
+  const [interfaces, setInterfaces] = useState([]);
+  const [selectedInterface, setSelectedInterface] = useState('');
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    async function fetchInterfaces() {
+      try {
+        const result = await NetworkInterfaces();
+        setInterfaces(result);
+        if (result.length > 0) {
+          setSelectedInterface(result[0]);
+        }
+      } catch (err) {
+        console.error('Error fetching network interfaces:', err);
+      }
+    }
+
+    fetchInterfaces();
+  }, []);
+
+  const handleSubmit = () => {
+    if (inputValue.trim() === '') return;
+    onSubmit({ iface: selectedInterface, value: inputValue });
+    onClose();
+  };
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal">
+        <h3>Open a new port</h3>
+
+        <label htmlFor="iface-select">Interface:</label>
+        <select
+          id="iface-select"
+          value={selectedInterface}
+          onChange={e => setSelectedInterface(e.target.value)}
+        >
+          {interfaces.map((iface, idx) => (
+            <option key={idx} value={iface}>
+              {iface}
+            </option>
+          ))}
+        </select>
+
+        <input
+          id="input-text"
+          type="text"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+          placeholder="Port..."
+          required
+        />
+
+        <div className="modal-buttons">
+          <button className="button-port" onClick={handleSubmit}>Accept</button>
+          <button className="button-port" onClick={onClose}>Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+}

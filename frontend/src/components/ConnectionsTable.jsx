@@ -1,0 +1,67 @@
+import React, { useState, useEffect } from 'react';
+import { GetAllConnections } from '../../wailsjs/go/connections/Service';
+import '../css/Dashboard.css';
+
+function ConnectionsTable({ setTotalConnections, onConnectionClick }) {
+    const [connections, setConnections] = useState([]);
+
+    useEffect(() => {
+        async function fetchConnections() {
+            try {
+                const conns = await GetAllConnections();
+                if (!Array.isArray(conns)) throw new Error("Invalid data");
+                const connsWithDate = conns.map(conn => ({
+                    ...conn,
+                    connectedAt: conn.connectedAt ? new Date(conn.connectedAt) : new Date()
+                }));
+                setConnections(connsWithDate);
+                setTotalConnections(connsWithDate.length);
+            } catch (err) {
+                console.error('Error fetching connections:', err);
+            }
+        }
+
+        fetchConnections();
+        const intervalId = setInterval(fetchConnections, 3000);
+        return () => clearInterval(intervalId);
+    }, [setTotalConnections]);
+
+    return (
+        <div className="connections-container">
+            <table className="connections-table">
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Username</th>
+                        <th>Hostname</th>
+                        <th>Distribution</th>
+                        <th>Date of connection</th>
+                        <th>State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {connections.map((conn, index) => (
+                        <tr
+                            key={index}
+                            onClick={() => onConnectionClick(conn)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <td>{conn.ip}</td>
+                            <td>{conn.username}</td>
+                            <td>{conn.hostname}</td>
+                            <td>{conn.distribution}</td>
+                            <td>{conn.connectedAt?.toLocaleString()}</td>
+                            <td>
+                                <span className={`connection-state ${conn.state}`}>
+                                    {conn.state ? conn.state.charAt(0).toUpperCase() + conn.state.slice(1) : 'Unknown'}
+                                </span>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+}
+
+export default ConnectionsTable;
