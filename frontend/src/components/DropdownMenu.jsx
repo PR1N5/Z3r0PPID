@@ -3,6 +3,7 @@ import InfoOpenPorts from "./InfoOpenPorts";
 import CloseAllPorts from "./CloseAllPorts";
 import ApplicationInformation from "./ApplicationInformation";
 import { CloseAllListeners } from '../../wailsjs/go/listener/Service';
+import { ShowPopup } from '../../wailsjs/go/window/API';
 import "../css/DropdownMenu.css";
 
 const DropdownMenu = () => {
@@ -22,6 +23,10 @@ const DropdownMenu = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const showPopupDebug = (text) => {
+    ShowPopup("WARNING", `${text}`);
+  };
+
   return (
     <div className="dropdown" ref={dropdownRef}>
       <button className="dropdown-toggle" onClick={() => setOpen(!open)}>
@@ -29,7 +34,7 @@ const DropdownMenu = () => {
       </button>
       {open && (
         <div className="dropdown-menu">
-          <div className="dropdown-item">Configuration</div>
+          <div className="dropdown-item" onClick={() => {showPopupDebug("The configuration button is not implemented :(")}}>Configuration</div>
           <div className="dropdown-item" onClick={() => {setShowInfoPorts(true);setOpen(!open)}} >Open ports...</div>
           <div className="dropdown-item" onClick={() => {setShowAbout(true);setOpen(!open)}} >About the c2...</div>
           <div className="dropdown-divider"></div>
