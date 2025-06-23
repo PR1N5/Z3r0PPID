@@ -1,4 +1,9 @@
 # Z3r0PPID
+
+> [!WARNING]
+> C2 is not fully implemented yet.
+
+
 C2 for manage the connections of rev-shells. Project made with Wails + React.
 
 ## Build instructions (Linux -> Windows)
