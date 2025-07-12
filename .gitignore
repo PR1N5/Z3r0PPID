@@ -32,6 +32,3 @@ bin/
 .idea/
 *.swp
 *.swo
-
-# Wails generated files
-wails.json
